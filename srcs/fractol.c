@@ -6,7 +6,7 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 22:31:26 by merras            #+#    #+#             */
-/*   Updated: 2019/06/26 03:28:25 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/21 13:29:01 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	print_usage()
 void	render_fractal(char *name)
 {
 	if (!ft_strcmp(name, "mandelbrot"))
-		mandelbrot();
-	/*else if (!ft_strcmp(name, "julia"))
-		julia();
+		render_wrapper(MAND);
+	else if (!ft_strcmp(name, "julia"))
+		render_wrapper(JULI);
 	else if (!ft_strcmp(name, "tree_index"))
-		tree_index();*/
+		render_wrapper(TREE);
 	else
 		print_usage();
 }
 
-int		main(int ac, char **av)
+int		main(int argc, char **argv)
 {
-	if (ac == 1)
+	if (argc != 2)
 	{
 		print_usage();	
 		return (0);
 	}
-	render_fractal(av[1]);
+	render_fractal(argv[1]);
 }

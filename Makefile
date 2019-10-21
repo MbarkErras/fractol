@@ -1,8 +1,10 @@
 NAME=fractol
 
-SRCS=fractals.c \
-	fractol.c \
-	mandelbrot.c
+SRCS=fractol.c \
+	 renderer.c \
+ 	 mandelbrot.c \
+	 julia.c \
+	 tree_index.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -13,7 +15,7 @@ OBJS_PATH=$(addprefix $(OBJS_DIR)/, $(OBJS))
 SRCS_PATH=$(addprefix $(SRCS_DIR)/, $(SRCS))
 INCLUDES=includes
 
-FLAGS= -Wall -Werror -Wextra
+FLAGS= #-Wall -Werror -Wextra
 
 all: $(NAME)
 

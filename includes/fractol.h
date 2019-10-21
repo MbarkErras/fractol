@@ -6,60 +6,49 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 22:32:18 by merras            #+#    #+#             */
-/*   Updated: 2019/10/21 07:08:05 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/21 13:29:19 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../libs/centropy/includes/centropy.h"
+// DEV
 # include <stdio.h>
+//////
+
+# include "../libs/centropy/includes/centropy.h"
 # include "mlx.h"
 
-# define WIDTH 500
-# define HEIGHT 500
-# define MAX_ITER 50
-# define ZOOM_IN 1.1
-# define ZOOM_OUT 0.9
-# define INIT_XY 1
+# define WINDOW_WIDTH 500
+# define WINDOW_HEIGHT 500
 
-void	mandelbrot();
-void	julia();
-void	tree_index();
+# define MAX_ITERATIONS 100
 
-# define MANDELBROT 0
-# define JULIA 1
-# define TREE_INDEX 2
+# define R(x) ((t_render *)r)->x
 
+# define MAND 0
+# define JULI 1
+# define TREE 2
 
 typedef struct	s_complex
 {
-	long double r;
-	long double i;
+	double		im;
+	double		re;
 }				t_complex;
 
-typedef struct	s_xy
+typedef	struct	s_render
 {
-	int			fractol;
-	int			height;
-	int			width;
-	double    r_max;
-	double    r_min;
-	double    i_max;
-	double    i_min;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			fractal;
+	double		scale;
+}				t_render;
 
-	void		*gserver;
-	void		*win;
-}				t_xy;
+int		mandelbrot(t_complex p);
+int		julia(t_complex p, t_complex c);
+int		tree_index(t_complex p);
 
-# define distance(r, i) r * r + i * i
+int		renderer(int button, int x, int y, void *r);
 
-t_xy	init_renderer(int fractol);
-int		rerender_handler(int button, int x, int y, t_xy *xy);
-int		convergence(double r, double i);
-
-void    mandelbrot_render_handler(int button, int x, int y, t_xy *xy);
-//void    julia_renderer(int button, int x, int y, t_xy *xy);
-//void   tree_index_renderer(int button, int x, int y, t_xy *xy);
 #endif
