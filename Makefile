@@ -2,6 +2,7 @@ NAME=fractol
 
 SRCS=fractol.c \
 	 renderer.c \
+	 render_hooks.c \
  	 mandelbrot.c \
 	 julia.c \
 	 tree_index.c
