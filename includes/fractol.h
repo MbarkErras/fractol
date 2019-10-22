@@ -6,7 +6,7 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 22:32:18 by merras            #+#    #+#             */
-/*   Updated: 2019/10/21 13:29:19 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/22 04:10:49 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include "../libs/centropy/includes/centropy.h"
 # include "mlx.h"
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
+
+# define SCALE 1.1
 
 # define MAX_ITERATIONS 100
 
@@ -43,6 +45,10 @@ typedef	struct	s_render
 	void		*win_ptr;
 	int			fractal;
 	double		scale;
+	double		l;
+	double		r;
+	double		t;
+	double		b;
 }				t_render;
 
 int		mandelbrot(t_complex p);
