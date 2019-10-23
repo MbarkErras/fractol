@@ -2,10 +2,8 @@ NAME=fractol
 
 SRCS=fractol.c \
 	 renderer.c \
+	 fractal_iterator.c \
 	 render_hooks.c \
- 	 mandelbrot.c \
-	 julia.c \
-	 tree_index.c
 
 OBJS=$(SRCS:.c=.o)
 

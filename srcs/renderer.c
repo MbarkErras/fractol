@@ -6,22 +6,11 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 08:26:38 by merras            #+#    #+#             */
-/*   Updated: 2019/10/23 00:37:04 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/23 22:55:54 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int		fractal_dispatcher(int f, t_complex p, t_complex c)
-{
-	if (f == MAND)
-		return (mandelbrot(p));
-	if (f == JULI)
-		return (julia(p, c));
-	if (f == TREE)
-		return (tree_index(p));
-	return (420);
-}
 
 void		renderer(t_complex m, void *r)
 {
@@ -34,10 +23,11 @@ void		renderer(t_complex m, void *r)
 		j = 0;
 		while (j < WINDOW_HEIGHT)
 		{
-			if (fractal_dispatcher(R(fractal),
+			
+			if (fractal_iterator(
 				(t_complex){(R(r) - R(l)) / WINDOW_WIDTH * i + R(l),
 				(R(t) - R(b)) / WINDOW_HEIGHT * (WINDOW_HEIGHT - j) + R(b)},
-				m))
+				m, r))
 				mlx_pixel_put(R(mlx_ptr), R(win_ptr), (int)i, (int)j, 0);
 			else
 				mlx_pixel_put(R(mlx_ptr), R(win_ptr), (int)i, (int)j,

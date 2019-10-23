@@ -6,7 +6,7 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 22:32:18 by merras            #+#    #+#             */
-/*   Updated: 2019/10/23 00:37:06 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/23 22:55:58 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 # include "../libs/centropy/includes/centropy.h"
 # include "mlx.h"
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 250
+# define WINDOW_HEIGHT 250
 
 # define INTER 1.1
 
-# define MAX_ITERATIONS 30
+# define MAX_ITERATIONS 1000
 
 # define R(x) (((t_render *)r)->x)
 
 # define MAND 0
 # define JULI 1
-# define TREE 2
+# define CUBE 2
 
 typedef struct	s_complex
 {
@@ -51,9 +51,7 @@ typedef	struct	s_render
 	double		b;
 }				t_render;
 
-int			mandelbrot(t_complex p);
-int			julia(t_complex p, t_complex c);
-int			tree_index(t_complex p);
+int			fractal_iterator(t_complex c, t_complex m, void *r);
 
 void		init_render_hooks(int f);
 void		renderer(t_complex m, void *r);
