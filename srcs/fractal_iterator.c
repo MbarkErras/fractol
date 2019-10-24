@@ -6,7 +6,7 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 08:06:07 by merras            #+#    #+#             */
-/*   Updated: 2019/10/23 22:55:57 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/24 01:05:57 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	fractal_iterator(t_complex c, t_complex m, void *r)
 		: z.re * z.re - z.im * z.im) + (R(fractal) == JULI ? m.re : c.re);
 		z.im = (R(fractal) == CUBE ? 3 * z.im * temp * temp - z.im * z.im * z.im
 		: 2 * z.im * temp) + (R(fractal) == JULI ? m.im : c.im);
-		if (z.re * z.re + z.im * z.im >= 4)
+		if (z.re * z.re + z.im * z.im >= 2)
 			break ;
 		i++;
 	}
-	return (i < MAX_ITERATIONS);
+	return (MAX_ITERATIONS < 5 ? 0 : i / (MAX_ITERATIONS / 5));
 }

@@ -6,7 +6,7 @@
 /*   By: merras <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 22:28:40 by merras            #+#    #+#             */
-/*   Updated: 2019/10/23 00:37:00 by merras           ###   ########.fr       */
+/*   Updated: 2019/10/24 00:01:17 by merras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_complex	mouse_coordinate_map(int x, int y, void *r)
 	return (m);
 }
 
-int		mouse_movement_hook(int x, int y, void *r)
+int			mouse_movement_hook(int x, int y, void *r)
 {
 	if (R(fractal) != JULI)
 		return (0);
@@ -30,7 +30,7 @@ int		mouse_movement_hook(int x, int y, void *r)
 	return (0);
 }
 
-int		mouse_roller_hook(int button, int x, int y, void *r)
+int			mouse_roller_hook(int button, int x, int y, void *r)
 {
 	t_complex	m;
 
@@ -42,6 +42,16 @@ int		mouse_roller_hook(int button, int x, int y, void *r)
 		R(b) = m.im + ((R(b) - m.im) * (button == 5 ? INTER : 1 / INTER));
 		R(t) = m.im + ((R(t) - m.im) * (button == 5 ? INTER : 1 / INTER));
 		renderer(m, r);
+	}
+	return (0);
+}
+
+int			esc_handler(int keycode, void *r)
+{
+	if (keycode == 53)
+	{
+		mlx_destroy_window(R(mlx_ptr), R(win_ptr));
+		exit(0);
 	}
 	return (0);
 }
